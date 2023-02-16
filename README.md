@@ -24,6 +24,12 @@ Start the symfony server  and go to nelmio api interface http://127.0.0.1:8000/a
 symfony server:start
 ```
 
+Execute phpunit test-coverage
+```
+vendor/bin/phpunit --coverage-html public/test-coverage
+OR
+XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html public/test-coverage
+```
 
 
 
