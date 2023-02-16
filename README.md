@@ -1,12 +1,14 @@
 <h1> Shop (sf6, php8) </h1>
 
-# Installation 
+[![Symfony](https://github.com/medalibs/shop_sf/actions/workflows/symfony.yml/badge.svg?branch=main)](https://github.com/medalibs/shop_sf/actions/workflows/symfony.yml)
+
+# Installation steps
 
 Clone the project : 
 
 ```
-git clone git@github.com:medalibs/shop_sf_ddd.git
-cd shop_sf_ddd/
+git clone git@github.com:medalibs/shop_sf.git
+cd shop_sf/
 ```
 Install dependencies :
 
