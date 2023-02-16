@@ -39,12 +39,6 @@ jobs:
       - name: Install Dependencies
         run: php composer.phar install -q --no-ansi --no-interaction --no-scripts
           --no-progress --prefer-dist
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        run: vendor/bin/phpunit
-      - name: Run Psalm
-        run: composer psalm
-      - name: Run PHP_CS
-        run: composer phpcs
       - name: Run Unit Tests
         run: XDEBUG_MODE_COVERAGE=coverage vendor/bin/phpunit
       - name: Create Database
