@@ -67,3 +67,9 @@ jobs:
         run: bin/console doctrine:migrations:diff
       - name: Execute a migration to a specified version or the latest available version.
         run: bin/console doctrine:migrations:migrate
+      - name: Generate test coverage badge
+        uses: ./
+        with:
+          coverage_badge_path: 'badge.svg'
+          push_badge: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
