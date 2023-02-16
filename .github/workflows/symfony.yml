@@ -1,47 +1,32 @@
+---
 name: Symfony
-
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
-
+    branches:
+      - main
 permissions:
   contents: read
-
 jobs:
   symfony-tests:
     runs-on: ubuntu-latest
     services:
-      # label used to access the service container
       postgres:
-        # Docker Hub image
         image: postgres:latest
-        # service environment variables
-        # `POSTGRES_HOST` is `postgres`
         env:
-          # required
-          POSTGRES_PASSWORD: !ChangeMe!
-          # optional (defaults to `5432`)
+          POSTGRES_PASSWORD: "!ChangeMe!"
           POSTGRES_PORT: 5432
-          # optional (defaults to `postgres`)
           POSTGRES_USER: app
         ports:
-          # maps tcp port 5432 on service container to the host
           - 5432:5432
-        # set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s
           --health-retries 5
     steps:
-      #  To automatically get bug fixes and new Php versions for shivammathur/setup-php,
-      # change this to (see https://github.com/shivammathur/setup-php#bookmark-versioning):
-      # uses: shivammathur/setup-php@v2
       - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
         with:
-          php-version: '8.2'
+          php-version: "8.2"
       - uses: actions/checkout@v3
       - name: Cache Composer packages
         id: composer-cache
@@ -52,7 +37,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
       - name: Install Dependencies
-        run: php composer.phar install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: php composer.phar install -q --no-ansi --no-interaction --no-scripts
+          --no-progress --prefer-dist
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
       - name: Run Psalm
@@ -63,13 +49,15 @@ jobs:
         run: XDEBUG_MODE_COVERAGE=coverage vendor/bin/phpunit
       - name: Create Database
         run: bin/console doctrine:database:create
-      - name: Generate a migration by comparing your current database to your mapping information.
+      - name: Generate a migration by comparing your current database to your mapping
+          information.
         run: bin/console doctrine:migrations:diff
-      - name: Execute a migration to a specified version or the latest available version.
+      - name: Execute a migration to a specified version or the latest available
+          version.
         run: bin/console doctrine:migrations:migrate
       - name: Generate test coverage badge
         uses: ./
         with:
-          coverage_badge_path: 'badge.svg'
+          coverage_badge_path: badge.svg
           push_badge: true
           repo_token: ${{ secrets.GITHUB_TOKEN }}
