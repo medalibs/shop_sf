@@ -1,4 +1,4 @@
-<h1> Shop (sf6, php8, DDD) </h1>
+<h1> Shop (sf6, php8) </h1>
 
 # Installation 
 
