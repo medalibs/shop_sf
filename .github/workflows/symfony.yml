@@ -41,8 +41,6 @@ jobs:
           --no-progress --prefer-dist
       - name: Run Unit Tests
         run: XDEBUG_MODE_COVERAGE=coverage vendor/bin/phpunit
-      - name: Create Database
-        run: bin/console doctrine:database:create
       - name: Generate a migration by comparing your current database to your mapping
           information.
         run: bin/console doctrine:migrations:diff
