@@ -31,8 +31,28 @@ OR
 XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html public/test-coverage
 ```
 
+# Project architecture
+````
+src
+├── Application
+│   ├── Command
+│   ├── Common
+│   └── Service
+├── Domain
+│   ├── Entity
+│   └── Repository
+├── Infrastructure
+│   ├── Common
+│   ├── DQL
+│   ├── ParamConverter
+│   ├── Repository
+│   └── Resources
+├── Kernel.php
+└── UI
+    └── Rest
 
 
+````
 
 
 
