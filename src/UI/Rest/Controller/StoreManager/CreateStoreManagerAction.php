@@ -19,7 +19,7 @@ class CreateStoreManagerAction extends AbstractController
     public function __construct(private readonly CreateStoreManagerCommandHandler $handler)
     {
     }
-    #[Route('/api/store/manager', name: 'app_store_manager_post', methods:['POST'])]
+    #[Route('/api/store/managers', name: 'app_store_manager_post', methods:['POST'])]
     #[OA\Response(
         response: 201,
         description: 'Successful response'

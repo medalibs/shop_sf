@@ -20,6 +20,7 @@ class SetStoreProductStock extends AbstractController
         description: 'Successful response'
     )]
     #[OA\RequestBody(content: new OA\JsonContent(ref: "#/components/schemas/Stock"))]
+    #[OA\Tag(name: 'Stock')]
     #[SetStockConverter('requestCreateStock')]
     public function __invoke(RequestCreateStock $requestCreateStock):JsonResponse
     {
