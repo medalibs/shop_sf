@@ -1,0 +1,52 @@
+App\Domain\Entity\Store:
+  type: entity
+  repositoryClass: App\Infrastructure\Repository\StoreRepository
+  table: store
+  indexes:
+    idx_ff57587756d76f8e:
+      columns:
+        - store_manager_id
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      id: true
+      generator:
+        strategy: SEQUENCE
+  fields:
+    name:
+      type: string
+      nullable: false
+      length: 255
+      options:
+        fixed: false
+    latitude:
+      type: float
+      nullable: false
+      precision: 10
+      scale: 0
+    longitude:
+      type: float
+      nullable: false
+      precision: 10
+      scale: 0
+    address:
+      type: string
+      nullable: false
+      length: 255
+      options:
+        fixed: false
+  manyToOne:
+    storeManager:
+      targetEntity: StoreManager
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        store_manager_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

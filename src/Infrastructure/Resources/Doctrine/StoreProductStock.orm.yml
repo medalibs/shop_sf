@@ -1,0 +1,47 @@
+App\Domain\Entity\StoreProductStock:
+    type: entity
+    table: store_product_stock
+    indexes:
+        idx_cbc9b0a24584665a:
+            columns:
+                - product_id
+        idx_cbc9b0a2b092a811:
+            columns:
+                - store_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        quantity:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    manyToOne:
+        store:
+            targetEntity: Store
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                store_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        product:
+            targetEntity: Product
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                product_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
