@@ -39,6 +39,8 @@ jobs:
       - name: Install Dependencies
         run: php composer.phar install -q --no-ansi --no-interaction --no-scripts
           --no-progress --prefer-dist
+      - name: set database host
+        run: sed -i 's/database:5432/0.0.0.0:5432/g' .env
       - name: Execute a migration to a specified version or the latest available
           version.
         run: bin/console doctrine:migrations:migrate
