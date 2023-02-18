@@ -39,9 +39,11 @@ jobs:
       - name: Install Dependencies
         run: php composer.phar install -q --no-ansi --no-interaction --no-scripts
           --no-progress --prefer-dist
+      - name: Copy .env
+        run: php -r "file_exists('.env.ci') || copy('.env.ci', '.env');"
       - name: Execute a migration to a specified version or the latest available
           version.
-        run: bin/workspace migrate
+        run: bin/console doctrine:migrations:migrate
       - name: Run Unit Tests
         run: XDEBUG_MODE_COVERAGE=coverage vendor/bin/phpunit
 
