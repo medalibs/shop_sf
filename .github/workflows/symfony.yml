@@ -41,7 +41,7 @@ jobs:
           --no-progress --prefer-dist
       - name: Execute a migration to a specified version or the latest available
           version.
-        run: bin/workspace migrate
+        run: bin/console doctrine:migrations:migrate
       - name: Run Unit Tests
         run: XDEBUG_MODE_COVERAGE=coverage vendor/bin/phpunit
 
