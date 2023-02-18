@@ -36,8 +36,8 @@ jobs:
           key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
-      - name: don't use .env.local
-        run: mv .env.local .tmp
+      - name: don't use .env.test
+        run: mv .env.test .tmp
       - name: Install Dependencies
         run: php composer.phar install -q --no-ansi --no-interaction --no-scripts
           --no-progress --prefer-dist
