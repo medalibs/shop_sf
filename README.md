@@ -1,4 +1,4 @@
-<h1> Shop (sf6, php8) </h1>
+<h1> Shop (sf6, php8) 1 </h1>
 
 [![Symfony](https://github.com/medalibs/shop_sf/actions/workflows/symfony.yml/badge.svg?branch=main)](https://github.com/medalibs/shop_sf/actions/workflows/symfony.yml)
 
